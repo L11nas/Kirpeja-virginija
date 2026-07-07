@@ -84,7 +84,7 @@ export default function Privacy() {
 
       contactTitle: '7. Contact',
       contactText:
-        'For any privacy-related questions please contact +370 67206686.',
+        'For any privacy-related questions please contact +370 654 60937.',
     },
   };
 

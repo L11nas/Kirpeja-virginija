@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Reviews from './components/Reviews';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import Privacy from './pages/Privacy';
@@ -44,6 +45,13 @@ function AppContent() {
     },
     openingHours: ['Mo-Fr 09:00-19:00', 'Sa 09:00-15:00'],
     priceRange: '€€',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: 5.0,
+      reviewCount: 94,
+      bestRating: 5,
+      worstRating: 1,
+    },
     sameAs: [
       'https://book.treatwell.lt/salonas/kirpeja-virginija/',
       'https://www.facebook.com/people/Kirp%C4%97ja-Virginija/61582796560584/',
@@ -122,6 +130,7 @@ function AppContent() {
               <>
                 <Hero />
                 <Services />
+                <Reviews />
                 <Gallery />
               </>
             }

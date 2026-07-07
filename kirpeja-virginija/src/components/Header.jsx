@@ -24,6 +24,7 @@ export default function Header() {
   const t = {
     LT: {
       services: 'Paslaugos',
+      reviews: 'Atsiliepimai',
       gallery: 'Galerija',
       contact: 'Kontaktai',
       book: 'Registruokis',
@@ -36,12 +37,14 @@ export default function Header() {
       bookAria: 'Registruotis vizitui internetu per Treatwell',
       callAria: 'Skambinti kirpėjai Virginijai',
       servicesAria: 'Pereiti į paslaugų skiltį',
+      reviewsAria: 'Pereiti į atsiliepimų skiltį',
       galleryAria: 'Pereiti į galerijos skiltį',
       contactAria: 'Pereiti į kontaktų skiltį',
       switchLang: 'Pakeisti svetainės kalbą',
     },
     EN: {
       services: 'Services',
+      reviews: 'Reviews',
       gallery: 'Gallery',
       contact: 'Contact',
       book: 'Book now',
@@ -54,6 +57,7 @@ export default function Header() {
       bookAria: 'Book an appointment online via Treatwell',
       callAria: 'Call hairdresser Virginija',
       servicesAria: 'Go to services section',
+      reviewsAria: 'Go to reviews section',
       galleryAria: 'Go to gallery section',
       contactAria: 'Go to contact section',
       switchLang: 'Change website language',
@@ -124,6 +128,21 @@ export default function Header() {
             }}
           >
             {t[lang].services}
+          </a>
+
+          <a
+            href='#atsiliepimai'
+            className='hover:text-[#C1A173] transition'
+            aria-label={t[lang].reviewsAria}
+            onClick={() => {
+              trackEvent('nav_click', {
+                link_location: 'header',
+                target_section: 'reviews',
+                device_type: 'desktop',
+              });
+            }}
+          >
+            {t[lang].reviews}
           </a>
 
           <a
@@ -277,6 +296,22 @@ export default function Header() {
             }}
           >
             {t[lang].services}
+          </a>
+
+          <a
+            href='#atsiliepimai'
+            className='block hover:text-[#C1A173]'
+            aria-label={t[lang].reviewsAria}
+            onClick={() => {
+              trackEvent('nav_click', {
+                link_location: 'mobile_menu',
+                target_section: 'reviews',
+                device_type: 'mobile',
+              });
+              setMenuOpen(false);
+            }}
+          >
+            {t[lang].reviews}
           </a>
 
           <a
