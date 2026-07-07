@@ -1,6 +1,5 @@
-import { Helmet } from 'react-helmet-async';
 import { Star } from 'lucide-react';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -8,7 +7,6 @@ const TREATWELL_BOOK_URL =
   'https://book.treatwell.lt/salonas/kirpeja-virginija/';
 const TREATWELL_REVIEWS_URL =
   'https://www.treatwell.lt/salonas/kirpeja-virginija/';
-const SITE_URL = 'https://kirpeja-virginija.lt/';
 
 const RATING = 5.0;
 const REVIEW_COUNT = 94;
@@ -113,34 +111,6 @@ export default function Reviews() {
 
   const selectedLang = lang === 'LT' ? 'lt' : 'en';
 
-  const reviewSchema = useMemo(
-    () =>
-      JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'HairSalon',
-        name: 'Kirpėja Virginija',
-        url: SITE_URL,
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: RATING,
-          reviewCount: REVIEW_COUNT,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        review: TESTIMONIALS.map((r) => ({
-          '@type': 'Review',
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: r.rating,
-            bestRating: 5,
-          },
-          author: { '@type': 'Person', name: r.author },
-          reviewBody: r.quote[selectedLang],
-        })),
-      }),
-    [selectedLang],
-  );
-
   useEffect(() => {
     const onScroll = () => {
       const section = document.getElementById('atsiliepimai');
@@ -167,10 +137,6 @@ export default function Reviews() {
       aria-labelledby='reviews-heading'
       aria-label={t[lang].sectionAria}
     >
-      <Helmet>
-        <script type='application/ld+json'>{reviewSchema}</script>
-      </Helmet>
-
       <div className='max-w-5xl mx-auto px-6 text-center'>
         <p className='text-[#C1A173] text-sm uppercase tracking-[0.2em] mb-3'>
           {t[lang].eyebrow}
